@@ -1,0 +1,106 @@
+:root {
+    --emphasis-color: #588157;
+    --light-green: #a3b18a;
+    --spacing-const: 1.25rem;
+    --font-list: 'Times New Roman', Times, serif;
+}
+
+body {
+    font-family:var(--font-list);
+    color: #344e41;
+    background-color: #dad7cd;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+a:hover {
+    color: #a1558f;
+}
+
+input:focus {
+    background-color: var(--light-green);
+}
+
+textarea:focus {
+    background-color: var(--light-green);
+}
+
+button:focus {
+    background-color: var(--light-green);
+}
+
+.navbar {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav {
+    border: 2px solid var(--emphasis-color);
+    background-color: #6eaf6d;
+}
+
+profile-pic {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+progress {
+    accent-color: purple;
+}
+
+iframe {
+    width:600px;
+    height:450px;
+}
+
+button {
+    padding: 0.25em;
+}
+
+article > h3 { /* Targets h3 elements that are children of article elements */
+    font-size: 1.05rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+footer {
+    padding: var(--spacing-const) 0;
+}
+
+label + progress { /* Targets the progress element directly after the label elements (adjacent sibling) */
+    margin-left: 20px;
+}
+
+input[type="text"] {
+    color: #711e9b;
+}
+
+input[type="email"] {
+    color: #711e9b;
+}
+
+textarea {
+    color: #711e9b;
+}
+
+@media (max-width: 700px) {
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    iframe {
+        width:100%;
+        height:250px;
+    }
+}

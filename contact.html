@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kyra Lee's Website</title>
+        <link rel="icon" href="#" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+
+    <body>
+        <hello-world></hello-world>
+        <script>
+            class HelloWorld extends HTMLElement {
+                connectedCallback() {
+                    console.log("Hello World");
+                }
+            }
+            customElements.define('hello-world', HelloWorld);
+        </script>
+        <noscript><p>Site works without JavaScript :D</p></noscript>
+        <header>
+            <h1>Kyra Lee's Website</h1>
+            <nav>
+                <ul class="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="contact.html">Contact Info</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Contact Info</h2>
+            <svg width="400" height="120">
+                <a href="#">
+                <rect x="10" y="10" width="200" height="100" stroke="black" stroke-width="6" fill="green" fill-opacity="0.5" />
+                </a>   
+            </svg>
+            <svg width="400" height="120">
+                <a href="#">
+                <rect x="10" y="10" width="200" height="100" stroke="black" stroke-width="6" fill="green" fill-opacity="0.5"/>
+                </a>   
+            </svg>
+            <svg width="400" height="120">
+                <a href="#">
+                <rect x="10" y="10" width="200" height="100" stroke="black" stroke-width="6" fill="green" fill-opacity="0.5"/>
+                </a>   
+            </svg>
+        </main>
+        <form>
+            <fieldset>
+                <legend>Want to connect?</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <br>
+                <label for="reason">Reason:</label>
+                <textarea id="reason" name="reason" rows="5" cols="50" placeholder="Type here..."></textarea>
+                <br>
+                <button>Submit</button>
+            </fieldset>
+        </form>
+        <footer>
+            <p>Made by: <em>Kyra Lee</em></p>
+        </footer>
+    </body>
+</html>
