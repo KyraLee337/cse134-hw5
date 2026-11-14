@@ -9,12 +9,12 @@
     </head>
     <body>
         <form action="https://httpbin.org/post" method="post">
-            <label for="name">Name: </label>
-            <input type="text" name="name" id="name" autocomplete="name" placeholder="Jane Doe"/>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" autocomplete="email" placeholder="example@email.com"/> 
-            <label for="comments">Comments:</label>
-            <textarea name="comments" id="comments" placeholder="Type here..."></textarea>
+            <label for="name">Enter Your Name [1-100 characters] (required): </label>
+            <input type="text" name="name" id="name" autocomplete="name" placeholder="Jane Doe" minlength="1" maxlength="100" required/>
+            <label for="email">Enter Your Email (required):</label>
+            <input type="email" name="email" id="email" autocomplete="email" placeholder="example@email.com" required/> 
+            <label for="comments">Comments [5-1000 characters] (required):</label>
+            <textarea name="comments" id="comments" placeholder="Type here..." minlength="5" maxlength="1000" required></textarea>
             <input type="hidden" name="possible_bot" id="possible_bot" value="true"/>
             <button type="submit">Submit</button>
         </form>
