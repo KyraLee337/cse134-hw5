@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kyra Lee's Website</title>
+        <link rel="icon" href="#" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <form action="https://httpbin.org/post" method="post">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" autocomplete="name" placeholder="Jane Doe"/>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" autocomplete="email" placeholder="example@email.com"/> 
+            <label for="comments">Comments:</label>
+            <textarea name="comments" id="comments" placeholder="Type here..."></textarea>
+            <input type="hidden" name="possible_bot" id="possible_bot" value="true"/>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
