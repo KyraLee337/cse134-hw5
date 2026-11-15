@@ -7,21 +7,23 @@
         <link rel="icon" href="#" type="image/x-icon">
         <link rel="stylesheet" href="style.css">
         <script src="form.js" defer></script>
+        <script src="theme.js" defer></script>
     </head>
-    <header>
-        <h1>Kyra Lee's Website</h1>
-        <nav>
-            <ul class="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="form-no-js.html">Contact no JS</a></li>
-                <li><a href="form-with-js.html">Contact with JS</a></li>
-            </ul>
-        </nav>
-    </header>
     <body>
+        <header>
+            <h1>Kyra Lee's Website</h1>
+            <button type="button" id="toggle-theme" hidden>Switch to dark mode</button>
+            <nav>
+                <ul class="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="form-no-js.html">Contact no JS</a></li>
+                    <li><a href="form-with-js.html">Contact with JS</a></li>
+                </ul>
+            </nav>
+        </header>
         <form action="https://httpbin.org/post" method="post">
             <label for="name">Enter Your Name [1-100 characters] (required): </label>
             <input type="text" name="name" id="name" autocomplete="name" placeholder="Jane Doe" minlength="1" maxlength="100" aria-describedby="error-name" required/>
