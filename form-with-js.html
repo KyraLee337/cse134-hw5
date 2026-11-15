@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kyra Lee's Website</title>
+        <link rel="icon" href="#" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <script src="form.js" defer></script>
+    </head>
+    <body>
+        <form action="https://httpbin.org/post" method="post">
+            <label for="name">Enter Your Name [1-100 characters] (required): </label>
+            <input type="text" name="name" id="name" autocomplete="name" placeholder="Jane Doe" minlength="1" maxlength="100" aria-describedby="error-name" required/>
+            <span id="error-name" class="error-message" aria-live="polite"></span>
+            <label for="email">Enter Your Email (required):</label>
+            <input type="email" name="email" id="email" autocomplete="email" placeholder="example@email.com" aria-describedby="error-email" required/> 
+            <span id="error-email" class="error-message" aria-live="polite"></span>
+            <label for="comments">Comments [5-1000 characters] (required):</label>
+            <textarea name="comments" id="comments" placeholder="Type here..." minlength="5" maxlength="1000" aria-describedby="char-count error-comments" required></textarea>
+            <span id="error-comments" class="error-message" aria-live="polite"></span>
+            <p id="char-count" class="char-count" hidden>1000 characters left</p>
+            <input type="hidden" name="possible_bot" id="possible_bot" value="true"/>
+            <input type="hidden" name="form-errors" id="form-errors"/>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

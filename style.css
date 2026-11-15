@@ -98,7 +98,7 @@ form {
     margin: 0 auto;
 }
 
-:required:user-invalid {
+:required:user-invalid, [aria-invalid="true"] {
     border-color: red;
     background-color: pink;
 }
@@ -106,6 +106,20 @@ form {
 :required:user-valid {
     border-color: #344e41;
     background-color: rgb(157, 184, 157);
+}
+
+.error-message {
+    color: maroon;
+    font-weight: bold;
+}
+
+.char-count {
+    color: black;
+}
+
+.char-count.limit-warn {
+    color: maroon;
+    font-weight: bold;
 }
 
 @media (max-width: 700px) {
