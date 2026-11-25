@@ -1,4 +1,4 @@
-<!DOCTYPE html> <!--test-->
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -7,20 +7,11 @@
         <link rel="icon" href="#" type="image/x-icon">
         <link rel="stylesheet" href="style.css">
         <script src="theme.js" defer></script>
+        <script src="opinions.js" defer></script>
     </head>
 
 
     <body>
-        <hello-world></hello-world>
-        <script>
-            class HelloWorld extends HTMLElement {
-                connectedCallback() {
-                    console.log("Hello World");
-                }
-            }
-            customElements.define('hello-world', HelloWorld);
-        </script>
-        <noscript><p>Site works without JavaScript :D</p></noscript>
         <header>
             <h1>Kyra Lee's Website</h1>
             <button type="button" id="toggle-theme" hidden>Switch to dark mode</button>
@@ -37,28 +28,34 @@
         </header>
         <main>
             <h2>About Me</h2>
+            <section>
+                <h3>Bio</h3>
+                <p>My name is Kyra Lee and I am a third year undergraduate student at UCSD majoring in Computer Science. I am interested in CS education research as well as low level systems.</p>
+                <label for="grad">Time left of undergrad: </label>
+                <progress id="grad" max="100" value="75">75%</progress>
+                <p>I enjoy seeking out teaching opportunities outside of my academics.</p>
+            </section>
+            <section>
+                <h3>Skills/Background</h3>
+                <p>Skills: Mentoring, communication, and teaching</p>
+                <p>Technical: C, C++, Python, Java, HTML/CSS, TypeScript</p>
+                <p>Software and Tools: Git, GDB, Valgrind, Makefiles, Google Workspace</p>
+                <div>
+                    <b>Work Experience</b>
+                    <ol>
+                        <li>Instructional Assistant</li>
+                        <li>Programs Coordinator</li>
+                        <li>Section Leader for Code In Place</li>
+                    </ol>
+                </div>
+            </section>
         </main>
-        <section>
-            <h3>Bio</h3>
-            <p>My name is Kyra Lee and I am a third year undergraduate student at UCSD majoring in Computer Science. I am interested in CS education research as well as low level systems.</p>
-            <label for="grad">Time left of undergrad: </label>
-            <progress id="grad" max="100" value="75">75%</progress>
-            <p>I enjoy seeking out teaching opportunities outside of my academics.</p>
-        </section>
-        <section>
-            <h3>Skills/Background</h3>
-            <p>Skills: Mentoring, communication, and teaching</p>
-            <p>Technical: C, C++, Python, Java, HTML/CSS, TypeScript</p>
-            <p>Software and Tools: Git, GDB, Valgrind, Makefiles, Google Workspace</p>
-            <div>
-                <b>Work Experience</b>
-                <ol>
-                    <li>Instructional Assistant</li>
-                    <li>Programs Coordinator</li>
-                    <li>Section Leader for Code In Place</li>
-                </ol>
-            </div>
-        </section>
+        <button type="button" id="toggle-details" hidden>Hide Hot Takes</button>
+        <unpopular-opinions>
+            <noscript>
+                <p>Please Enable JavaScript to see hot takes.</p>
+            </noscript>
+        </unpopular-opinions>
         <footer>
             <p>Made by: <em>Kyra Lee</em></p>
         </footer>
