@@ -10,6 +10,7 @@ class DadJoke extends HTMLElement {
     status;
     btn;
     jokeBtn;
+    btnB = false;
 
     connectedCallback() {
         if (!this.isShown) {
@@ -20,15 +21,18 @@ class DadJoke extends HTMLElement {
         this.btn = document.getElementById("toggle-details");
         if (this.btn) {
             this.btn.hidden = false;
-            this.btn.addEventListener("click", () => {
-                const hiddenChoice = this.toggleAttribute("hidden");
-                if (hiddenChoice) {
-                    this.savePreference("hidden");
-                }
-                else {
-                    this.savePreference("visible");
-                }
-            });
+            if (!this.btnB) {
+                this.btn.addEventListener("click", () => {
+                    const hiddenChoice = this.toggleAttribute("hidden");
+                    if (hiddenChoice) {
+                        this.savePreference("hidden");
+                    }
+                    else {
+                        this.savePreference("visible");
+                    }
+                });
+            this.btnB = true;
+        }
         }
         const saved = this.loadPreference();
         this.toggleAttribute("hidden", saved === "hidden");
