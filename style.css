@@ -103,9 +103,9 @@ iframe {
 button {
     padding: 0.4em 0.8em;
     font-family: inherit;
-    color: var(--button-text);
-    background-color: var(--button-background);
-    border: 2px solid var(--emphasis-color);
+    color: var(--button-text, white);
+    background-color: var(--button-background,#344e41);
+    border: 2px solid var(--emphasis-color, #588157);
     border-radius: 2px;
     cursor: pointer;
 }
@@ -203,12 +203,12 @@ input:focus, textarea:focus {
 }
 
 dad-jokes {
-    --joke-background: var(--nav-background, #6eaf6d);
+    --joke-background: var(--page-background, #dad7cd);
     --joke-text: var(--main-text, #344e41);
     --joke-border: var(--emphasis-color, #588157);
 
     display: block;
-    background-color: var(--joke-background, #6eaf6d);
+    background-color: var(--joke-background, #dad7cd);
     color: var(--joke-text, #344e41);
     border: 2px solid var(--joke-border,#588157);
     border-radius: 6px;
