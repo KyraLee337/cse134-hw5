@@ -1,4 +1,5 @@
 const KEY = "hw5-dad-jokes";
+const ITEM = "hw5-dad-jokes-item";
 
 class DadJoke extends HTMLElement {
     static get observedAttributes() {
@@ -15,7 +16,15 @@ class DadJoke extends HTMLElement {
     connectedCallback() {
         if (!this.isShown) {
             this.renderJoke();
-            this.dadJoke();
+            const savedJoke = this.loadItem();
+            if (savedJoke) {
+                this.display.textContent = savedJoke.joke;
+                this.display.dataset.id = savedJoke.id ?? "";
+                this.status.textContent = "Showing saved joke"
+            }
+            else {
+                this.dadJoke();
+            }
         }
 
         this.btn = document.getElementById("toggle-details");
@@ -58,6 +67,32 @@ class DadJoke extends HTMLElement {
         }
         catch (error) {
             console.warn("Could not save preferences.", error);
+        }
+    }
+
+    loadItem() {
+        try {
+            const raw = localStorage.getItem(ITEM);
+            if (!raw) {
+                return null;
+            }
+            const item = JSON.parse(raw);
+            if (typeof item?.joke === "string") {
+                return item;
+            }
+        }
+        catch (error) {
+            console.warn("Could not read saved joke", error);
+        }
+        return null;
+    }
+
+    saveItem(item) {
+        try {
+            localStorage.setItem(ITEM, JSON.stringify(item));
+        }
+        catch (error) {
+            console.warn("Could not save joke.", error);
         }
     }
 
@@ -118,6 +153,8 @@ class DadJoke extends HTMLElement {
                 throw new Error("Expected a joke in the response.");
             }
             this.display.textContent = data.joke;
+            this.display.dataset.id = typeof data?.id === "string" ? data.id: "";
+            this.saveItem({ id: data.id, joke: data.joke });
             this.status.textContent = "Please Laugh";
             this.jokeBtn.textContent = "Make me groan";
         }
