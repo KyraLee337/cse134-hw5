@@ -2,7 +2,7 @@ const KEY = "hw5-dad-jokes";
 
 class DadJoke extends HTMLElement {
     static get observedAttributes() {
-        return ["hidden"];
+        return ["compact"];
     }
 
     isShown = false;
@@ -11,6 +11,7 @@ class DadJoke extends HTMLElement {
     btn;
     jokeBtn;
     btnB = false;
+    details;
 
     connectedCallback() {
         if (!this.isShown) {
@@ -23,26 +24,26 @@ class DadJoke extends HTMLElement {
             this.btn.hidden = false;
             if (!this.btnB) {
                 this.btn.addEventListener("click", () => {
-                    const hiddenChoice = this.toggleAttribute("hidden");
-                    if (hiddenChoice) {
-                        this.savePreference("hidden");
+                    const compact = this.toggleAttribute("hidden");
+                    if (compact) {
+                        this.savePreference("compact");
                     }
                     else {
-                        this.savePreference("visible");
+                        this.savePreference("expanded");
                     }
                 });
             this.btnB = true;
         }
         }
         const saved = this.loadPreference();
-        this.toggleAttribute("hidden", saved === "hidden");
-        this.updateState(this.hasAttribute("hidden"));
+        this.toggleAttribute("compact", saved === "compact");
+        this.updateState(this.hasAttribute("compact"));
     }
 
     loadPreference() {
         try {
             const value = localStorage.getItem(KEY);
-            if (value === "hidden" || value === "visible") {
+            if (value === "compact" || value === "expanded") {
                 return value;
             }
         }
@@ -62,26 +63,28 @@ class DadJoke extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldVal, newVal) {
-        if (name === "hidden") {
-            const isHidden = newVal !== null;
-            this.updateState(isHidden);
+        if (name === "compact") {
+            this.updateState(newVal !== null);
         }
     }
 
-    updateState(isHidden) {
-        if (this.btn) {
-            if (isHidden) {
-                this.btn.textContent = "Show Dad Jokes";
-            }
-            else {
-                this.btn.textContent = "Hide Dad Jokes";
-            }
+    updateState(compact) {
+        if (this.details) {
+            this.details.hidden = compact;
         }
+        if (this.btn) {
+            this.btn.textContent = "Show Dad Jokes";
+        }
+        else {
+            this.btn.textContent = "Hide Dad Jokes";
+        }
+        this.btn.setAttribute("aria-expanded", String(!compact));
     }
     renderJoke() {
         const heading = document.createElement("h3");
         heading.textContent = "Dad Jokes";
     
+        this.details = document.createElement("div");
         this.jokeBtn = document.createElement("button");
         this.jokeBtn.type = "button";
         this.jokeBtn.textContent = "Make me groan";
@@ -93,10 +96,11 @@ class DadJoke extends HTMLElement {
         this.jokeBtn.addEventListener("click", () => {
             this.dadJoke();
         });
+        this.details.appendChild(this.jokeBtn);
+        this.details.appendChild(this.display);
+        this.details.appendChild(this.status);
         this.appendChild(heading);
-        this.appendChild(this.jokeBtn);
-        this.appendChild(this.display);
-        this.appendChild(this.status);
+        this.appendChild(this.details);
         this.isShown = true;
     }
     
