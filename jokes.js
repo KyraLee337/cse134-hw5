@@ -1,3 +1,5 @@
+const KEY = "hw5-dad-jokes";
+
 class DadJoke extends HTMLElement {
     static get observedAttributes() {
         return ["hidden"];
@@ -19,10 +21,40 @@ class DadJoke extends HTMLElement {
         if (this.btn) {
             this.btn.hidden = false;
             this.btn.addEventListener("click", () => {
-                this.toggleAttribute("hidden");
+                const hiddenChoice = this.toggleAttribute("hidden");
+                if (hiddenChoice) {
+                    this.savePreference("hidden");
+                }
+                else {
+                    this.savePreference("visible");
+                }
             });
         }
+        const saved = this.loadPreference();
+        this.toggleAttribute("hidden", saved === "hidden");
         this.updateState(this.hasAttribute("hidden"));
+    }
+
+    loadPreference() {
+        try {
+            const value = localStorage.getItem(KEY);
+            if (value === "hidden" || value === "visible") {
+                return value;
+            }
+        }
+        catch (error) {
+            console.warn("Could not read preferences.", error);
+        }
+        return "visible";
+    }
+
+    savePreference(value) {
+        try {
+            localStorage.setItem(KEY, value);
+        }
+        catch (error) {
+            console.warn("Could not save preferences.", error);
+        }
     }
 
     attributeChangedCallback(name, oldVal, newVal) {
@@ -50,6 +82,7 @@ class DadJoke extends HTMLElement {
         this.jokeBtn.type = "button";
         this.jokeBtn.textContent = "Make me groan";
         this.display = document.createElement("p");
+        this.display.setAttribute("aria-live", "polite")
         this.status = document.createElement("p");
         this.status.setAttribute("role", "status");
     
@@ -82,7 +115,7 @@ class DadJoke extends HTMLElement {
             }
             this.display.textContent = data.joke;
             this.status.textContent = "Please Laugh";
-            this.jokeBtn.textContent = "Make me Groan";
+            this.jokeBtn.textContent = "Make me groan";
         }
         catch (error) {
             console.error("Could not load the joke.", error);

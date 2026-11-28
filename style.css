@@ -201,3 +201,22 @@ input:focus, textarea:focus {
         animation: none !important;
     }
 }
+
+dad-jokes {
+    --joke-background: var(--nav-background, #6eaf6d);
+    --joke-text: var(--main-text, #344e41);
+    --joke-border: var(--emphasis-color, #588157);
+
+    display: block;
+    background-color: var(--joke-background, #6eaf6d);
+    color: var(--joke-text, #344e41);
+    border: 2px solid var(--joke-border,#588157);
+    border-radius: 6px;
+    padding: var(--spacing-const, 1.25rem);
+    margin-block: var(--spacing-const, 1.25rem);
+}
+
+dad-jokes button:focus-visible, #toggle-details:focus {
+    outline: 3px solid var(--main-text, #344e41);
+    outline-offset: 2px;;
+}
