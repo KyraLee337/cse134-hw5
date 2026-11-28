@@ -20,7 +20,7 @@ class DadJoke extends HTMLElement {
             if (savedJoke) {
                 this.display.textContent = savedJoke.joke;
                 this.display.dataset.id = savedJoke.id ?? "";
-                this.status.textContent = "Showing saved joke"
+                this.status.textContent = "Please Laugh";
             }
             else {
                 this.dadJoke();
@@ -72,7 +72,7 @@ class DadJoke extends HTMLElement {
 
     loadItem() {
         try {
-            const raw = localStorage.getItem(ITEM);
+            const raw = sessionStorage.getItem(ITEM);
             if (!raw) {
                 return null;
             }
@@ -89,7 +89,7 @@ class DadJoke extends HTMLElement {
 
     saveItem(item) {
         try {
-            localStorage.setItem(ITEM, JSON.stringify(item));
+            sessionStorage.setItem(ITEM, JSON.stringify(item));
         }
         catch (error) {
             console.warn("Could not save joke.", error);
