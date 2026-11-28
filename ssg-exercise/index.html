@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kyra Lee's Website</title>
+        <link rel="icon" href="#" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <script src="theme.js" defer></script>
+    </head>
+
+    <body>
+        <hello-world></hello-world>
+        <script>
+            class HelloWorld extends HTMLElement {
+                connectedCallback() {
+                    console.log("Hello World");
+                }
+            }
+            customElements.define('hello-world', HelloWorld);
+        </script>
+        <noscript><p>Site works without JavaScript :D</p></noscript>
+        <header>
+            <h1>Kyra Lee's Website</h1>
+            <button type="button" id="toggle-theme" hidden>Switch to dark mode</button>
+            <nav>
+                <ul class="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="form-no-js.html">Contact no JS</a></li>
+                    <li><a href="form-with-js.html">Contact with JS</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Welcome to my site!</h2>
+            <h3><span lang="tl">Kamusta</span></h3>
+            <p>My name is Kyra Lee and I am a third year Computer Science major at <strong>UCSD</strong>. </p>
+            <profile-pic>
+                <img src="#" alt="Headshot photo">
+            </profile-pic>
+            <br>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.6277523148083!2d-117.23768234252931!3d32.8815671466909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc06c4414caf4f%3A0xefb6aafc89913ea7!2sUniversity%20of%20California%20San%20Diego!5e0!3m2!1sen!2sus!4v1792089567002!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </main>
+        <footer>
+            <p>Made by: <em>Kyra Lee</em></p>
+        </footer>
+    </body>
+</html>
